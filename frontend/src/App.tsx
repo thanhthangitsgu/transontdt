@@ -7,7 +7,6 @@ import ChangePassword from './components/ChangePassword';
 import { ToastContainer } from 'react-toastify';
 import Loading from './components/Loading';
 import { useDispatch, useSelector } from 'react-redux';
-import AxiosAuth from './api/AxiosAuth';
 import { AppDispatch, RootState } from './redux/store';
 import AxiosClient from './api/AxiosClient';
 import { setAuth } from './redux/store/AuthSlice';
@@ -59,7 +58,7 @@ export default function App() {
 
   useEffect(() => {
     setIsLoad(true);
-    AxiosAuth.get('profile').then((data) => {
+    AxiosClient.get('profile').then((data) => {
       let profile = data?.data;
       if (profile && profile.id) {
         profile.role_id = parseInt(data.data.role_id);
